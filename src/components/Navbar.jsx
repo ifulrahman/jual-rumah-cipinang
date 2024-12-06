@@ -1,4 +1,5 @@
 import { useState } from "react";
+import logo from "../assets/logo-black.png";
 
 const Navbar = ({ scrollToSection }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,7 +14,7 @@ const Navbar = ({ scrollToSection }) => {
         {/* Logo dan H1 */}
         <div className="flex items-center space-x-4">
           <img
-            src="./src/assets/logo-black.png" // Ganti dengan path logo Anda
+            src={logo} // Ganti dengan path logo Anda
             alt="Logo"
             className="object-cover w-16 h-16"
           />
