@@ -1,3 +1,5 @@
+import investasiImage from "../assets/images.png";
+
 const Information = () => {
     return (
       <section className="py-10 font-poppins text-[14px]">
@@ -6,7 +8,7 @@ const Information = () => {
             {/* Bagian Gambar */}
             <div className="flex items-center justify-center md:w-1/2">
               <img
-                src="src/assets/images.png"
+                src={investasiImage}
                 alt="Potensi Investasi"
                 className="w-[600px] h-[250px] object-contain"
               />
