@@ -1,6 +1,6 @@
 const WhatsAppButton = () => {
     const whatsappLink =
-      "https://wa.me/6281287104229?text=Halo%20Bpk.%20Syam,%20saya%20ingin%20bertanya%20lebih%20lanjut%20tentang%20Residensi%20Jaktim.";
+      "https://wa.me/6281287104229?text=Halo%20Bpk.%20Syam,%20saya%20ingin%20bertanya%20lebih%20lanjut%20tentang%20rumah%20di%20Cipinang%20yang%20sedang%20anda%20jual.";
   
     return (
       <div className="fixed z-50 bottom-4 right-4 font-poppins text-[13px]">
