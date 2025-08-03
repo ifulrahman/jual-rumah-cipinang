@@ -29,7 +29,7 @@ const Information = () => {
                   <br />
                   <strong>Harga:</strong>{" "}
                   <span className="font-semibold text-green-600">
-                    Rp 4,5 Milyar 💸 (Masih Bisa Nego!)
+                    Rp 3,5 Milyar 💸 (Masih Bisa Nego!)
                   </span>
                 </p>
                 <p>

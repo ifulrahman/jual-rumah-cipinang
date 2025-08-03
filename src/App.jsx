@@ -8,6 +8,8 @@ import Maps from "./components/Maps";
 import Footer from "./components/Footer";
 import Information from "./components/Information";
 import WhatsApp from "./components/WhatsApp";
+import VideoButton from "./components/VideoButton";
+import VideoSection from "./components/VideoSection";
 
 const App = () => {
   const scrollToSection = (id) => {
@@ -24,6 +26,8 @@ const App = () => {
 
       <Specs />
 
+      <VideoSection />
+
       <Images />
 
       <Parallax />
@@ -33,6 +37,8 @@ const App = () => {
       <Maps />
 
       <WhatsApp />
+
+      <VideoButton />
 
       <Footer/>
     </div>

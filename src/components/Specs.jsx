@@ -16,7 +16,7 @@ const Specs = () => {
   };
 
   return (
-    <section className="bg-gray-50 py-6 font-poppins text-[14px]" id="spesifikasi">
+    <section className="bg-gray-50 py-8 font-poppins text-[14px]" id="spesifikasi">
       <div className="container p-4 mx-auto bg-white rounded-lg shadow-md">
         <h2 className="mb-6 text-xl font-semibold text-center text-gray-800">
           Spesifikasi Properti
@@ -25,11 +25,11 @@ const Specs = () => {
         {/* Ringkasan Properti */}
         <div className="grid grid-cols-2 gap-4 mb-6 sm:grid-cols-4">
           <div className="flex flex-col items-center">
-            <span className="text-lg font-bold text-gray-800">465 m²</span>
+            <span className="text-lg font-bold text-gray-800">330 m²</span>
             <span className="text-sm text-gray-600">L. Tanah</span>
           </div>
           <div className="flex flex-col items-center">
-            <span className="text-lg font-bold text-gray-800">465 m²</span>
+            <span className="text-lg font-bold text-gray-800">330 m²</span>
             <span className="text-sm text-gray-600">L. Bangunan</span>
           </div>
           <div className="flex flex-col items-center">
