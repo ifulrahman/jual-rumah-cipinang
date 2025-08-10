@@ -5,7 +5,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        poppins: ['Poppins', ...defaultTheme.fontFamily.sans], // Tambahkan font Poppins
+        figtree: ['Figtree', ...defaultTheme.fontFamily.sans],
+        // jadikan default untuk font figtree:
+        sans: ['Figtree', ...defaultTheme.fontFamily.sans],
       },
     },
   },

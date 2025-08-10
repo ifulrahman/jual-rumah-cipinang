@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -83,20 +83,28 @@ const Images = () => {
     setIsModalOpen(false);
   };
 
-  // Custom Next Arrow
+  useEffect(() => {
+    const onKey = (e) => e.key === "Escape" && setIsModalOpen(false);
+    if (isModalOpen) window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isModalOpen]);
+
   const NextArrow = ({ onClick }) => (
     <button
-      className="absolute z-10 p-2 text-white transform -translate-y-1/2 bg-gray-800 rounded-full right-4 top-1/2 hover:bg-gray-600"
+      type="button"
+      aria-label="Next"
+      className="absolute z-10 p-2 text-white -translate-y-1/2 bg-gray-800 rounded-full shadow right-4 top-1/2 md:p-3 hover:bg-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/70"
       onClick={onClick}
     >
       ❯
     </button>
   );
 
-  // Custom Prev Arrow
   const PrevArrow = ({ onClick }) => (
     <button
-      className="absolute z-10 p-2 text-white transform -translate-y-1/2 bg-gray-800 rounded-full left-4 top-1/2 hover:bg-gray-600"
+      type="button"
+      aria-label="Previous"
+      className="absolute z-10 p-2 text-white -translate-y-1/2 bg-gray-800 rounded-full shadow left-4 top-1/2 md:p-3 hover:bg-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/70"
       onClick={onClick}
     >
       ❮
@@ -114,17 +122,12 @@ const Images = () => {
     prevArrow: <PrevArrow />,
     responsive: [
       {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          centerPadding: "20px",
-        },
+        breakpoint: 1024,
+        settings: { slidesToShow: 2, centerPadding: "40px" },
       },
       {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-        },
+        breakpoint: 768,
+        settings: { slidesToShow: 1, centerPadding: "16px" },
       },
     ],
   };
@@ -132,26 +135,29 @@ const Images = () => {
   return (
     <section className="py-28 bg-gray-50 font-poppins" id='foto'>
       <div className="container px-4 mx-auto">
-        <h2 className="mb-10 text-3xl font-semibold text-center">
-          Galeri Rumah
+        <h2 className="mb-10 text-3xl font-bold text-center sm:text-4xl">
+          Galeri{" "}
+          <span className="font-light underline underline-offset-4 decoration-1">
+            Rumah
+          </span>
         </h2>
         <div className="relative">
           <Slider {...settings}>
             {images.map((image, index) => (
-              <div
-                key={index}
-                className={`transition-transform duration-300 ease-in-out relative ${
-                  index === currentSlide
-                    ? "scale-70 z-10"
-                    : "scale-90 opacity-70"
-                }`}
-                onClick={() => openModal(image.src)}
-              >
-                <img
-                  src={image.src}
-                  alt={image.caption}
-                  className="object-cover w-full transition-transform duration-300 ease-in-out rounded-lg shadow-lg h-72"
-                />
+            <div
+              key={index}
+              className={`group relative transition-transform duration-300 ease-in-out ${
+                index === currentSlide ? "scale-100 z-10" : "scale-90 opacity-70"
+              }`}
+              onClick={() => openModal(image.src)}
+            >
+              <img
+                src={image.src}
+                alt={image.caption ?? `Foto ${index + 1}`}
+                loading="lazy"
+                className="w-full h-72 sm:h-80 object-cover rounded-xl shadow-lg transform transition-transform duration-300 group-hover:scale-[1.02]"
+              />
+              {image.caption && (
                 <p
                   className={`mt-4 text-[14px] font-medium text-center text-gray-800 ${
                     index === currentSlide ? "z-20" : ""
@@ -159,8 +165,10 @@ const Images = () => {
                 >
                   {image.caption}
                 </p>
-              </div>
-            ))}
+              )}
+            </div>
+          ))}
+
           </Slider>
         </div>
       </div>
@@ -168,13 +176,14 @@ const Images = () => {
       {/* Modal untuk gambar besar */}
       {isModalOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75"
-          onClick={closeModal}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/75"
+          onClick={closeModal} // klik backdrop = close
         >
           <img
             src={currentImage}
             alt="Gambar besar"
-            className="max-w-full max-h-full rounded-lg"
+            className="max-w-[92vw] max-h-[90vh] rounded-xl shadow-xl"
+            onClick={(e) => e.stopPropagation()} // klik gambar = jangan close
           />
         </div>
       )}

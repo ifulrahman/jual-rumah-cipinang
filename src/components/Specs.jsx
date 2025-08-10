@@ -1,3 +1,4 @@
+import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 const Specs = () => {
@@ -16,42 +17,40 @@ const Specs = () => {
   };
 
   return (
-    <section className="bg-gray-50 py-8 font-poppins text-[14px]" id="spesifikasi">
-      <div className="container p-4 mx-auto bg-white rounded-lg shadow-md">
-        <h2 className="mb-6 text-xl font-semibold text-center text-gray-800">
-          Spesifikasi Properti
+    <section className="bg-gray-50 py-8 text-[14px]" id="spesifikasi">
+      <div className="container p-6 mx-auto bg-white shadow-lg rounded-2xl sm:p-11">
+        <h2 className="text-2xl font-bold text-center mb-11 sm:text-4xl">
+          Spesifikasi{" "}
+          <span className="font-light underline underline-offset-4 decoration-1">
+            Properti
+          </span>
         </h2>
 
         {/* Ringkasan Properti */}
-        <div className="grid grid-cols-2 gap-4 mb-6 sm:grid-cols-4">
-          <div className="flex flex-col items-center">
-            <span className="text-lg font-bold text-gray-800">330 m²</span>
-            <span className="text-sm text-gray-600">L. Tanah</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <span className="text-lg font-bold text-gray-800">330 m²</span>
-            <span className="text-sm text-gray-600">L. Bangunan</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <span className="text-lg font-bold text-gray-800">2</span>
-            <span className="text-sm text-gray-600">K. Mandi</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <span className="text-lg font-bold text-gray-800">5</span>
-            <span className="text-sm text-gray-600">K. Tidur</span>
-          </div>
+        <div className="grid grid-cols-2 gap-6 mb-6 divide-x divide-gray-200 sm:grid-cols-4">
+          {[
+            { value: "330 m²", label: "L. Tanah" },
+            { value: "330 m²", label: "L. Bangunan" },
+            { value: "2", label: "K. Mandi" },
+            { value: "5", label: "K. Tidur" },
+          ].map((item, idx) => (
+            <div key={idx} className="flex flex-col items-center px-4">
+              <span className="text-xl font-bold text-gray-900">{item.value}</span>
+              <span className="text-sm font-light text-gray-500">{item.label}</span>
+            </div>
+          ))}
         </div>
 
         {/* Detail Properti */}
         <div className="pb-6 mb-4 border-b-2">
           <button
-            className="flex items-center justify-between w-full py-2 font-medium text-gray-800"
+            className="flex items-center justify-between w-full px-2 py-3 transition-colors rounded-lg hover:bg-gray-50"
             onClick={() => toggleSection("detail")}
           >
-            <h3 className="text-[16px] font-medium text-gray-800 mb-2">
-              Detail Properti
-            </h3>
-            <span className="text-lg">{expanded.detail ? "▲" : "▼"}</span>
+            <h3 className="text-lg font-bold text-gray-800">Detail Properti</h3>
+            <ChevronDown
+              className={`w-5 h-5 transition-transform ${expanded.detail ? "rotate-180" : ""}`}
+            />
           </button>
           <div
             className={`pl-4 overflow-hidden transition-all duration-300 ease-in-out ${
@@ -60,10 +59,10 @@ const Specs = () => {
           >
             <ul className="space-y-2 text-gray-700">
               <li>
-                <strong>Luas Tanah:</strong> 465 m<sup>2</sup>
+                <strong>Luas Tanah:</strong> 330 m<sup>2</sup>
               </li>
               <li>
-                <strong>Luas Bangunan:</strong> 465 m<sup>2</sup>
+                <strong>Luas Bangunan:</strong> 330 m<sup>2</sup>
               </li>
               <li>
                 <strong>Kamar Tidur:</strong> 5
@@ -87,13 +86,13 @@ const Specs = () => {
         {/* Spesifikasi Bangunan */}
         <div className="pb-6 mb-4 border-b-2">
           <button
-            className="flex items-center justify-between w-full py-2 font-medium text-gray-800"
+            className="flex items-center justify-between w-full px-2 py-3 transition-colors rounded-lg hover:bg-gray-50"
             onClick={() => toggleSection("building")}
           >
-            <h3 className="text-[16px] font-medium text-gray-800 mb-2">
-              Lokasi Investasi Ideal!
-            </h3>
-            <span className="text-lg">{expanded.building ? "▲" : "▼"}</span>
+            <h3 className="text-lg font-bold text-gray-800">Lokasi Investasi Ideal!</h3>
+            <ChevronDown
+              className={`w-5 h-5 transition-transform ${expanded.building ? "rotate-180" : ""}`}
+            />
           </button>
           <div
             className={`pl-4 overflow-hidden transition-all duration-300 ease-in-out ${
@@ -116,18 +115,32 @@ const Specs = () => {
         </div>
 
         {/* Deskripsi */}
-        <div>
-          <h3 className="text-[16px] font-medium text-gray-800 mb-2">
-            Deskripsi
-          </h3>
-          <p className="text-gray-700">
-            Di tengah kawasan Cipinang yang terus berkembang, dengan potensi
-            investasi yang sangat menjanjikan. Rumah ini memiliki luas tanah dan
-            bangunan 465 m² yang dapat dimanfaatkan untuk tempat tinggal
-            eksklusif atau peluang usaha seperti kontrakan dan kos-kosan yang
-            banyak diminati di sekitar area Cipinang.
-          </p>
+        <div className="pb-6 mb-0 ">
+          <button
+            className="flex items-center justify-between w-full px-2 py-3 transition-colors rounded-lg hover:bg-gray-50"
+            onClick={() => toggleSection("additional")}
+          >
+            <h3 className="text-lg font-bold text-gray-800">Deskripsi</h3>
+            <ChevronDown
+              className={`w-5 h-5 transition-transform ${expanded.additional ? "rotate-180" : ""}`}
+            />
+          </button>
+
+          <div
+            className={`pl-4 overflow-hidden transition-all duration-300 ease-in-out ${
+              expanded.additional ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+            }`}
+          >
+            <p className="mt-2 text-gray-700">
+              Di tengah kawasan Cipinang yang terus berkembang, dengan potensi
+              investasi yang sangat menjanjikan. Rumah ini memiliki luas tanah dan
+              bangunan 330 m² yang dapat dimanfaatkan untuk tempat tinggal
+              eksklusif atau peluang usaha seperti kontrakan dan kos-kosan yang
+              banyak diminati di sekitar area Cipinang.
+            </p>
+          </div>
         </div>
+
       </div>
     </section>
   );

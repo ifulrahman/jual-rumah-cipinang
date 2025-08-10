@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import videoFile from "../assets/videos/video-highlight.mp4";
 import thumbnail from "../assets/images/2.jpg";
+import { Play, Video } from "lucide-react";
 
 const VideoSection = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,26 +33,26 @@ const VideoSection = () => {
               alt="Thumbnail Video"
               className="w-full h-auto rounded-lg shadow-lg"
             />
-            <div className="absolute inset-0 flex items-center justify-center transition bg-black opacity-0 bg-opacity-40 group-hover:opacity-100">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-16 h-16 text-white"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M10 8.64L15.27 12 10 15.36V8.64M8 5v14l11-7L8 5z" />
-              </svg>
+            {/* Play Icon Overlay */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="p-4 transition-transform rounded-full bg-black/60 group-hover:scale-110">
+                <Play className="w-10 h-10 text-white" />
+              </div>
             </div>
           </div>
 
           {/* RIGHT: Text & CTA */}
           <div className="w-full text-center md:w-1/2 md:text-left text-[13px]">
-            <h2 className="mb-4 text-2xl font-bold">
-              🎥 Video Highlight Properti
+            <h2 className="flex items-center justify-center gap-2 mb-4 text-2xl font-bold text-center sm:justify-start sm:text-left sm:text-4xl">
+              <Video className="w-8 h-8 text-gray-800" />
+              Video Highlight{" "}
+              <span className="font-light underline underline-offset-4 decoration-1">
+                Properti
+              </span>
             </h2>
             <p className="mb-4 leading-relaxed text-gray-700">
               Tonton video singkat ini untuk melihat langsung kondisi rumah dan
-              lingkungannya. Dapatkan gambaran visual yang jelas sebelum kamu
+              lingkungannya. Dapatkan gambaran visual yang jelas sebelum anda
               bertanya.
             </p>
             <button
