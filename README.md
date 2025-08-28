@@ -8,7 +8,10 @@
 
 - **React (Vite)** – Fast React development environment with instant Hot Module Reload (HMR).  
 - **Tailwind CSS** – Utility-first CSS framework for elegant, responsive design using minimal custom styles.
-- **Lucide React** – Lightweight, tree-shakable icon library with inline SVG components for minimal bundle size.  
+- **Lucide React** – Lightweight, tree-shakable icon library with inline SVG components for minimal bundle size.
+- **PostCSS + Autoprefixer** – CSS transformations and cross-browser compatibility.
+- **ESLint + React Plugins** – Linting and best practices enforcement for React.
+- **Carousel Libraries** – react-responsive-carousel, react-slick/slick-carousel for image sliders.
 
 ---
 
